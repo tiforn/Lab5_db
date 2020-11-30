@@ -139,14 +139,14 @@ public class UserEntity {
     this.coursesInfo = coursesInfo;
   }
 
-//  @OneToOne(mappedBy = "user")
-//  public SecurityEntity getSecurityBySecurityId() {
-//    return securityBySecurityId;
-//  }
-//
-//  public void setSecurityBySecurityId(SecurityEntity securityBySecurityId) {
-//    this.securityBySecurityId = securityBySecurityId;
-//  }
+  @OneToOne(mappedBy = "userByUserId")
+  public SecurityEntity getSecurityBySecurityId() {
+    return securityBySecurityId;
+  }
+
+  public void setSecurityBySecurityId(SecurityEntity securityBySecurityId) {
+    this.securityBySecurityId = securityBySecurityId;
+  }
 
   @Override
   public String toString() {
