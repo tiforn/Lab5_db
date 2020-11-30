@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/lab_5_db?serverTimezone=UTC</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">14072002sdiot</property>
+        <mapping class="com.didula.model.AnswerEntity"/>
+        <mapping class="com.didula.model.CourseEntity"/>
+        <mapping class="com.didula.model.CourseInfoEntity"/>
+        <mapping class="com.didula.model.GenderEntity"/>
+        <mapping class="com.didula.model.MessageEntity"/>
+        <mapping class="com.didula.model.ModuleEntity"/>
+        <mapping class="com.didula.model.SecurityEntity"/>
+        <mapping class="com.didula.model.TestEntity"/>
+        <mapping class="com.didula.model.UserEntity"/>
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>
