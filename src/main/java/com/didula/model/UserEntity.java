@@ -66,12 +66,15 @@ public class UserEntity {
     this.birthYear = birthYear;
   }
 
-  public UserEntity() {
+  public UserEntity() {}
 
-  }
-
-  public UserEntity(Integer id, String fullName, String forumsName, String email,
-                    Integer birthYear, GenderEntity genderByGenderId) {
+  public UserEntity(
+      Integer id,
+      String fullName,
+      String forumsName,
+      String email,
+      Integer birthYear,
+      GenderEntity genderByGenderId) {
     this.id = id;
     this.fullName = fullName;
     this.forumsName = forumsName;
@@ -139,19 +142,19 @@ public class UserEntity {
     this.coursesInfo = coursesInfo;
   }
 
-//  @OneToOne(mappedBy = "user")
-//  public SecurityEntity getSecurityBySecurityId() {
-//    return securityBySecurityId;
-//  }
-//
-//  public void setSecurityBySecurityId(SecurityEntity securityBySecurityId) {
-//    this.securityBySecurityId = securityBySecurityId;
-//  }
+  @OneToOne(mappedBy = "userByUserId")
+  public SecurityEntity getSecurityBySecurityId() {
+    return securityBySecurityId;
+  }
+
+  public void setSecurityBySecurityId(SecurityEntity securityBySecurityId) {
+    this.securityBySecurityId = securityBySecurityId;
+  }
 
   @Override
   public String toString() {
-    return  String.format("%3s   %50s   %50s   %30s   %4s   %6s ", id, fullName, forumsName,
-            email, birthYear, genderByGenderId.getId());
+    return String.format(
+        "%3s   %50s   %50s   %30s   %4s   %6s ",
+        id, fullName, forumsName, email, birthYear, genderByGenderId.getId());
   }
-
 }

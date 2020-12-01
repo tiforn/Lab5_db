@@ -1,13 +1,21 @@
 package com.didula.model;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "security", schema = "lab_5_db")
 public class SecurityEntity {
   private Integer id;
   private String password;
-  private UserEntity user;
+  private UserEntity userByUserId;
 
   @Id
   @Column(name = "id")
@@ -30,14 +38,12 @@ public class SecurityEntity {
     this.password = password;
   }
 
-  public SecurityEntity() {
+  public SecurityEntity() {}
 
-  }
-
-  public SecurityEntity(Integer id, String password, UserEntity user) {
+  public SecurityEntity(Integer id, String password, UserEntity userByUserId) {
     this.id = id;
     this.password = password;
-    this.user = user;
+    this.userByUserId = userByUserId;
   }
 
   @Override
@@ -69,18 +75,17 @@ public class SecurityEntity {
   }
 
   @OneToOne
-  @JoinColumn(name = "user_id", referencedColumnName = "id")
+  @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
   public UserEntity getUserByUserId() {
-    return user;
+    return userByUserId;
   }
 
   public void setUserByUserId(UserEntity user) {
-    this.user = user;
+    this.userByUserId = user;
   }
 
   @Override
   public String toString() {
-    return  String.format("%3s   %8s   %3s ", id, password, user.getId());
+    return String.format("%3s   %8s   %3s ", id, password, userByUserId.getId());
   }
-
 }
